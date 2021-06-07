@@ -16,14 +16,15 @@ def get():
     bp=float(request.args['BP'])
     hrate=float(request.args['Hrate'])
     glue=float(request.args['Glue'])
+    alcohol=float(request.args['Alcohol'])
     data='framingham.csv'
     df=pd.read_csv(data,na_values='',na_filter='0')
-    fname=['male','age','cigsPerDay','totChol','sysBP','heartRate','glucose']
+    fname=['male','age','alcohol','cigsPerDay','totChol','sysBP','heartRate','glucose']
     tname=['TenYearCHD']
     x=df[fname]
     y=df[tname]
     x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.000001,random_state=123)
-    new_data=OrderedDict([('male',male),('age',age),('cigsPerDay',smoking),('totChol',chol),('sysBP',bp),('heartRate',hrate),('glucose',glue)])
+    new_data=OrderedDict([('male',male),('age',age),('alcohol',alcohol),('cigsPerDay',smoking),('totChol',chol),('sysBP',bp),('heartRate',hrate),('glucose',glue)])
     new_data=pd.Series(new_data).values.reshape(1,-1)
     linear_regression_model = LinearRegression()
     linear_regression_model.fit(x_train,y_train)
