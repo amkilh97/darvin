@@ -7,3 +7,5 @@ Api
 Resource
 flask_restful
 sklearn
+LinearRegression
+train_test_split
