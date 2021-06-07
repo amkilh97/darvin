@@ -18,7 +18,7 @@ def get():
     glue=float(request.args['Glue'])
     alcohol=float(request.args['Alcohol'])
     data='framingham.csv'
-    df=pd.read_csv(data,na_values='',na_filter='0')
+    df=pd.read_csv(data)
     fname=['male','age','alcohol','cigsPerDay','totChol','sysBP','heartRate','glucose']
     tname=['TenYearCHD']
     x=df[fname]
